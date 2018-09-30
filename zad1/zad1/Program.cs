@@ -38,33 +38,30 @@ namespace zad1
 
                 double year = (Char.GetNumericValue(peselArray[0])) * 10 + (Char.GetNumericValue(peselArray[1]));
                 double month = (Char.GetNumericValue(peselArray[2])) * 10 + (Char.GetNumericValue(peselArray[3]));
-                Date monthdate = new Date();
-                Date yeardate = new Date();
 
                 if(month < 89 && month >= 80)
                 {
-                    monthdate.month(month, 80);
-                    monthdate.year(year, 1800);
+                    month = month - 80;
+                    year = year + 1800;
                 }
                 else if (month <29 && month >= 20)
                 {
-                    monthdate.month(month, 20);
-                    monthdate.year(year, 2000);
+                    month = month - 80;
+                    year = year + 2000;
                 }
                 else if (month < 12 && month >= 01)
                 {
-                    monthdate.month(month, 0);
-                    monthdate.year(year, 1900);
+                    year = year + 1900;
                 }
                 else if (month < 49 && month >= 40)
                 {
-                    monthdate.month(month, 40);
-                    monthdate.year(year, 2100);
+                    month = month - 40;
+                    year = year + 2100;
                 }
                 else if (month < 69 && month >= 60)
                 {
-                    monthdate.month(month, 60);
-                    monthdate.year(year, 2200);
+                    month = month - 60;
+                    year = year + 2200;
                 }
 
                 double day = (Char.GetNumericValue(peselArray[4])) * 10 + (Char.GetNumericValue(peselArray[5]));
