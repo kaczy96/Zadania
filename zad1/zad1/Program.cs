@@ -49,14 +49,15 @@ namespace zad1
                 double year = (Char.GetNumericValue(peselArray[0])) * 10 + (Char.GetNumericValue(peselArray[1]));
                 double month = (Char.GetNumericValue(peselArray[2])) * 10 + (Char.GetNumericValue(peselArray[3]));
 
-                if(month < 89 && month >= 80)
+                #region
+                if (month < 89 && month >= 80)
                 {
                     month = month - 80;
                     year = year + 1800;
                 }
-                else if (month <29 && month >= 20)
+                else if (month < 29 && month >= 20)
                 {
-                    month = month - 80;
+                    month = month - 20;
                     year = year + 2000;
                 }
                 else if (month < 12 && month >= 01)
@@ -73,55 +74,18 @@ namespace zad1
                     month = month - 60;
                     year = year + 2200;
                 }
-
+                #endregion
                 double day = (Char.GetNumericValue(peselArray[4])) * 10 + (Char.GetNumericValue(peselArray[5]));
 
-                if(month < 10 && day < 10)
-                {
-                    Console.WriteLine("Data urodzenia: {0}-0{1}-0{2}", year, month, day);
-                }
-                else if (month < 10)
-                {
-                    Console.WriteLine("Data urodzenia: {0}-0{1}-{2}", year, month, day);
-                }
-                else if (day < 10)
-                {
-                    Console.WriteLine("Data urodzenia: {0}-{1}-0{2}", year, month, day);
-                }
-                else
-                {
-                    Console.WriteLine("Data urodzenia: {0}-{1}-{2}", year, month, day);
-                }
+                DateRegulation regulacjaDMR = new DateRegulation();
+                regulacjaDMR.yearRegulation(day,month, year);
 
-                double sumakontrolna =
-                    Char.GetNumericValue(peselArray[0]) * 1 +
-                    Char.GetNumericValue(peselArray[1]) * 3 +
-                    Char.GetNumericValue(peselArray[2]) * 7 +
-                    Char.GetNumericValue(peselArray[3]) * 9 +
-                    Char.GetNumericValue(peselArray[4]) * 1 +
-                    Char.GetNumericValue(peselArray[5]) * 3 +
-                    Char.GetNumericValue(peselArray[6]) * 7 +
-                    Char.GetNumericValue(peselArray[7]) * 9 +
-                    Char.GetNumericValue(peselArray[8]) * 1 +
-                    Char.GetNumericValue(peselArray[9]) * 3;
-                sumakontrolna =  sumakontrolna % 10;
-                sumakontrolna = 10 - sumakontrolna;
-                if (sumakontrolna == Char.GetNumericValue(peselArray[10]))
-                {
-                    if (Char.GetNumericValue(peselArray[9]) % 2 == 0)
-                    {
-                        Console.WriteLine("Płeć: Kobieta");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Płeć: Mężczyzna");
-                    }
-                    Console.WriteLine("Nr PESEL prawidłowy");
-                }
-                else
-                {
-                    Console.WriteLine("Nr PESEL nieprawidłowy");
-                }
+                SumaKontrola sumakontrolna = new SumaKontrola();
+                double sk = sumakontrolna.sumaKontrolna(peselArray);
+
+                int kontrola = 0;
+                Validation weryfikacja = new Validation();
+                weryfikacja.validation(kontrola, sk, peselArray);
 
             }
 
