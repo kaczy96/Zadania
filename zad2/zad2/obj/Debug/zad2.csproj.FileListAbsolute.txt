@@ -1,0 +1,7 @@
+c:\users\tomas\source\repos\zad2\zad2\bin\Debug\zad2.exe.config
+c:\users\tomas\source\repos\zad2\zad2\bin\Debug\zad2.exe
+c:\users\tomas\source\repos\zad2\zad2\bin\Debug\zad2.pdb
+c:\users\tomas\source\repos\zad2\zad2\obj\Debug\zad2.csprojAssemblyReference.cache
+c:\users\tomas\source\repos\zad2\zad2\obj\Debug\zad2.csproj.CoreCompileInputs.cache
+c:\users\tomas\source\repos\zad2\zad2\obj\Debug\zad2.exe
+c:\users\tomas\source\repos\zad2\zad2\obj\Debug\zad2.pdb
