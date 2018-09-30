@@ -14,10 +14,20 @@ namespace zad1
             Console.WriteLine("Wprowadź swój nr PESEL");
             try
             {
-
+                
 
                 string pesel = Console.ReadLine();
-                if(pesel.Length > 11)
+
+                double num;
+                bool isNum = double.TryParse(pesel, out num);
+                if(!isNum)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Niepoprawny nr PESEL");
+                    goto start;
+                }
+        
+                if (pesel.Length > 11)
                 {
                     Console.Clear();
                     Console.WriteLine("Podany nr PESEL jest za długi");
@@ -81,6 +91,36 @@ namespace zad1
                 else
                 {
                     Console.WriteLine("Data urodzenia: {0}-{1}-{2}", year, month, day);
+                }
+
+                double sumakontrolna =
+                    Char.GetNumericValue(peselArray[0]) * 1 +
+                    Char.GetNumericValue(peselArray[1]) * 3 +
+                    Char.GetNumericValue(peselArray[2]) * 7 +
+                    Char.GetNumericValue(peselArray[3]) * 9 +
+                    Char.GetNumericValue(peselArray[4]) * 1 +
+                    Char.GetNumericValue(peselArray[5]) * 3 +
+                    Char.GetNumericValue(peselArray[6]) * 7 +
+                    Char.GetNumericValue(peselArray[7]) * 9 +
+                    Char.GetNumericValue(peselArray[8]) * 1 +
+                    Char.GetNumericValue(peselArray[9]) * 3;
+                sumakontrolna =  sumakontrolna % 10;
+                sumakontrolna = 10 - sumakontrolna;
+                if (sumakontrolna == Char.GetNumericValue(peselArray[10]))
+                {
+                    if (Char.GetNumericValue(peselArray[9]) % 2 == 0)
+                    {
+                        Console.WriteLine("Płeć: Kobieta");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Płeć: Mężczyzna");
+                    }
+                    Console.WriteLine("Nr PESEL prawidłowy");
+                }
+                else
+                {
+                    Console.WriteLine("Nr PESEL nieprawidłowy");
                 }
 
             }
